@@ -1,9 +1,11 @@
-# 定义文件名
-file_to_read = "file_to_read.txt"
-result_file = "result.txt"
+import os
+
+# 输入文件和输出文件的路径
+input_file_path = "Exercise_1/file_to_read.txt"
+output_file_path = "Exercise_1/result.txt"
 
 # 打开输入文件进行读取
-with open(file_to_read, "r") as input_file:
+with open(input_file_path, "r") as input_file:
     # 读取文件的内容
     content = input_file.read()
     
@@ -34,11 +36,17 @@ with open(file_to_read, "r") as input_file:
     # 将修改后的单词重新连接成字符串
     modified_content = " ".join(modified_words)
 
+# 获取输出文件的文件夹路径
+output_folder = os.path.dirname(output_file_path)
+
+# 如果输出文件夹不存在，创建它
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+
 # 打开结果文件进行写入
-with open(result_file, "w") as output_file:
+with open(output_file_path, "w") as output_file:
     # 将修改后的内容写入结果文件
     output_file.write(modified_content)
 
 # 显示 "terrible" 的总计数
 print("总计 'terrible' 出现次数：", terrible_count)
-
